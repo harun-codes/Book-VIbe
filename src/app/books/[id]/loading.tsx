@@ -1,5 +1,5 @@
 import React from 'react';
-import Books from '../page';
+// import Books from '../page';
 
 const BooksDetailsLoading = () => {
     return (
