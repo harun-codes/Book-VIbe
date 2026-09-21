@@ -17,12 +17,16 @@ interface Book {
   yearOfPublishing: number;
 }
 
-const getBooks = async (): Promise<Book[]> => {
- const res = await fetch("/booksData.json");
-  const data = await res.json();
-  return data;
-};
+import fs from "fs";
+import path from "path";
 
+const getBooks = async (): Promise<IBook[]> => {
+  const filePath = path.join(process.cwd(), "public", "booksData.json");
+
+  const fileData = fs.readFileSync(filePath, "utf-8");
+
+  return JSON.parse(fileData);
+};
 const Books = async () => {
   const booksData = await getBooks();
 
